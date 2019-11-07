@@ -1,0 +1,29 @@
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\SunamoNTextCat.deps.json
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\SunamoNTextCat.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\SunamoNTextCat.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\duo.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\GDataTranslate.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\ResourcesShared.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\shared.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\sunamo.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\SunamoTranslate.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\HtmlAgilityPack.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\YamlDotNet.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\fmdev.XliffParser.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\Diacritics.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\shared.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\SunamoTranslate.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\duo.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\GDataTranslate.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\ResourcesShared.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\bin\Debug\netstandard2.0\sunamo.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.csprojAssemblyReference.cache
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.AssemblyInfoInputs.cache
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.AssemblyInfo.cs
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.csproj.CopyComplete
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.pdb
+D:\_C\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.dll
+D:\_C\sunamo\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.pdb
+D:\Documents\Visual Studio 2017\Projects\sunamo.teamwork\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.dll
+D:\Documents\Visual Studio 2017\Projects\sunamo.teamwork\SunamoNTextCat\obj\Debug\netstandard2.0\SunamoNTextCat.pdb
