@@ -19,6 +19,19 @@ namespace SunamoYt
         const string uriPrefix = "/watch?v=";
         static ChangeQuotaExceededApiKeys changeQuotaExceededApiKeys = ChangeQuotaExceededApiKeys.Instance;
 
+        public static string GetPageTitle(string codeyt)
+        {
+            var uri = UriWebServices.YouTube.GetLinkToVideo(codeyt);
+            var html = HttpRequestHelper.GetResponseText(uri, HttpMethod.Get, null);
+
+            var hd = HtmlAgilityHelper.CreateHtmlDocument();
+            hd.LoadHtml(html);
+
+            var title = HtmlAssistant.InnerText(hd.DocumentNode, true, "span", "class", "watch-title");
+
+            return title;
+        }
+
         public static Dictionary<SongFromInternet, float> SearchYtVideos( string nameArtist, string nameSong)
         {
             YouTubeService youtube = CreateYouTubeService();
