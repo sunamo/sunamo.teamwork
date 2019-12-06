@@ -115,6 +115,12 @@ namespace SunamoYt
             }
         }
 
+        /// <summary>
+        /// Whene throw error, Slo\u017Eka ke soubor\u016Fm aplikace nebyla zad\u00E1na
+        /// 
+        /// must set ThisApp.Name = "sunamo", ThisApp.Project = "SunamoCzAdmin"; and AppData.ci.GetRootFolder();
+        /// </summary>
+        /// <returns></returns>
         private static YouTubeService CreateYouTubeService()
         {
             return new YouTubeService(new BaseClientService.Initializer()
@@ -169,16 +175,17 @@ namespace SunamoYt
             return null;
         }
 
-        public static bool IsYtVideoAvailable(string ytCode)
+        public static bool? IsYtVideoAvailable(string ytCode)
         {
             YouTubeService youtube = CreateYouTubeService();
 
             return IsYtVideoAvailable(ytCode, ref youtube);
         }
 
-        static bool IsYtVideoAvailable(string ytCode, ref YouTubeService youtube)
+        static bool? IsYtVideoAvailable(string ytCode, ref YouTubeService youtube)
         {
-            var listRequest = youtube.Videos.List("status");
+            //
+            var listRequest = youtube.Videos.List("contentDetails,status");
             listRequest.Id = ytCode;
 
             VideoListResponse resp = null;
@@ -195,32 +202,46 @@ namespace SunamoYt
                 {
                     return IsYtVideoAvailable(ytCode, ref youtube);
                 }
-
+                else
+                {
+                    return null;
+                }
             }
 
             foreach (var item in resp.Items)
             {
+                var contentDetails = item.ContentDetails;
                 //var s = item.Snippet.ToString();
                 var status = item.Status;
-                if (status == null)
-                {
-                    ThrowExceptions.Custom(type, RH.CallingMethod(), "Status is null");
-                }
-                else
-                {
+                //if (status == null)
+                //{
+                //    ThrowExceptions.Custom(type, RH.CallingMethod(), "Status is null");
+                //}
+                //else
+                //{
                     //status.PrivacyStatus
                     //status.RejectionReason;
                     //status.embeddable;
 
-
                     // first is uploaded, then is processed
+
                     if (status.UploadStatus != UploadStatuses.processed.ToString())
                     {
                         return false;
                     }
-
-                    return true;
+                if (contentDetails.RegionRestriction != null)
+                {
+                    if (contentDetails.RegionRestriction.Blocked != null)
+                    { 
+                if (contentDetails.RegionRestriction.Blocked.Count > 0)
+                {
+                    return false;
                 }
+                    }
+                }
+
+                return true;
+                //}
             }
 
             return false;
