@@ -31,11 +31,7 @@ public static class YouTubeHelper
             for (int i = 0; i < l.Count; i++)
             {
                 var s = l[i];
-                if (RegexHelper.IsUri(s))
-                {
-                    
-                    l[i] = QSHelper.GetParameter(s, "v");
-                }
+            l[i] = YouTube.ParseYtCode(l[i]);
                 
             }
 

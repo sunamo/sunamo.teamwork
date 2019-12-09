@@ -15,6 +15,9 @@ namespace SunamoYt
     {
         static Type type = typeof(SunamoYtHelper);
         public static Func<string, bool> existsYtVideo;
+        public static PpkOnDrive YouTubeAvailable = null;
+        public static PpkOnDrive YouTubeUnavailableInSeveralCountriesButPlaying;
+        public static PpkOnDrive YouTubeReallyUnavailable;
 
         const string uriPrefix = "/watch?v=";
         static ChangeQuotaExceededApiKeys changeQuotaExceededApiKeys = ChangeQuotaExceededApiKeys.Instance;
@@ -184,11 +187,28 @@ namespace SunamoYt
 
         static bool? IsYtVideoAvailable(string ytCode, ref YouTubeService youtube)
         {
-            //
-            var listRequest = youtube.Videos.List("contentDetails,status");
+            if (YouTubeAvailable.Contains(ytCode))
+            {
+                return true;
+            }
+
+            if (YouTubeUnavailableInSeveralCountriesButPlaying.Contains(ytCode))
+            {
+                return true;
+            }
+
+            if (YouTubeReallyUnavailable.Contains(ytCode))
+            {
+                return false;
+            }
+
+            //status
+            var listRequest = youtube.Videos.List("contentDetails");
             listRequest.Id = ytCode;
 
             VideoListResponse resp = null;
+
+            bool? result = null;
 
             try
             {
@@ -225,26 +245,47 @@ namespace SunamoYt
 
                     // first is uploaded, then is processed
 
-                    if (status.UploadStatus != UploadStatuses.processed.ToString())
-                    {
-                        return false;
-                    }
+                    //if (status.UploadStatus != UploadStatuses.processed.ToString())
+                    //{
+                    //    return false;
+                    //}
+
                 if (contentDetails.RegionRestriction != null)
                 {
                     if (contentDetails.RegionRestriction.Blocked != null)
                     { 
-                if (contentDetails.RegionRestriction.Blocked.Count > 0)
-                {
-                    return false;
-                }
+                        if (contentDetails.RegionRestriction.Blocked.Count > 0)
+                        {
+                            result = false;
+                        }
+                    }
+                    else
+                    {
+                        if (contentDetails.RegionRestriction.Allowed.Count > 0)
+                        {
+                            result = false;
+                        }
                     }
                 }
-
-                return true;
-                //}
+                else
+                {
+                    result = true;
+                }
             }
 
-            return false;
+            if (result.HasValue)
+            {
+                if (result.Value)
+                {
+                    YouTubeAvailable.Add(ytCode);
+                }
+                else
+                {
+                    // Když video není dostupné, musím to ověřit přímo v prohlížeči. To dělám v YtVideosSongsPairing
+                }
+            }
+
+            return result;
         }
 
         static Dictionary<SongFromInternet, float> GetVideos(ref List<SongFromInternet> nameOfAllYTVideos, int maxResults, string nameArtist, string nameSong, ref YouTubeService youtube)
