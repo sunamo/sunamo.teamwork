@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-
+using sunamo.Essential;
 
 public partial class TranslateAbleHelper
 {
@@ -44,7 +44,7 @@ public partial class TranslateAbleHelper
             result = false; return result;
         }
 
-        if (between.Contains('\uFFFD'))
+        if (between.Contains('\uFFFD'.ToString()))
         {
             result = false; return result;
         }
@@ -218,7 +218,7 @@ public partial class TranslateAbleHelper
         }
 
         // curly bracket 
-        if (between.Contains(AllChars.cbl) && between.Contains(AllChars.cbr))
+        if (between.Contains(AllStrings.cbl) && between.Contains(AllStrings.cbr))
         {
             var occl = SH.ReturnOccurencesOfString(between, AllStrings.cbl);
             var occr = SH.ReturnOccurencesOfString(between, AllStrings.cbr);
@@ -322,7 +322,7 @@ public partial class TranslateAbleHelper
         }
         #endregion
 
-        if (!between.Contains(AllChars.space))
+        if (!between.Contains(AllStrings.space))
         {
             int from = between.IndexOf(AllChars.lb);
             int to = between.IndexOf(AllChars.rb);
