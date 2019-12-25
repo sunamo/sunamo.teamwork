@@ -14,9 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Core" Version="1.40.3" />
+    <PackageReference Include="Google.Apis.Core" Version="1.42.0" />
     <PackageReference Include="NTextCat" Version="0.2.1.30" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
   </ItemGroup>
 
   <ItemGroup>
