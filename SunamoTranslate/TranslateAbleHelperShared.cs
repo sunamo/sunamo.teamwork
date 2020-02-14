@@ -447,8 +447,8 @@ public partial class TranslateAbleHelper
         }
         #endregion
 
-        //DebugLogger.Instance.WriteLine(between);
-        //DebugLogger.Instance.WriteLine("");
+        ////DebugLogger.Instance.WriteLine(between);
+        ////DebugLogger.Instance.WriteLine("");
 
         if (outsideReplaceBadChars)
         {

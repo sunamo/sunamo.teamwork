@@ -88,7 +88,7 @@ public class TranslateHelper
             }
         }
 #if DEBUG
-        DebugLogger.Instance.WriteLine($"Translate {input} from {from} to {to}");
+        //DebugLogger.Instance.WriteLine($"Translate {input} from {from} to {to}");
 #endif
 
         var response = _client.TranslateText(input, to, from);
