@@ -109,11 +109,17 @@ namespace SunamoYt
 
         private static void RemoveAlreadyExistedVideos(Dictionary<SongFromInternet, float> sm, List<SongFromInternet> l)
         {
-            foreach (var item in l)
+            if (l != null)
             {
-                if (existsYtVideo.Invoke(item.ytCode))
+                foreach (var item in l)
                 {
-                    sm.Remove(item);
+                    if (item != null && existsYtVideo != null)
+                    {
+                        if (existsYtVideo.Invoke(item.ytCode))
+                        {
+                            sm.Remove(item);
+                        }
+                    }
                 }
             }
         }
