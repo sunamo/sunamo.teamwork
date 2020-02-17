@@ -35,6 +35,12 @@ namespace SunamoYt
             return title;
         }
 
+        /// <summary>
+        /// A1 is needed due to find videos on youtube
+        /// </summary>
+        /// <param name="nameArtist"></param>
+        /// <param name="nameSong"></param>
+        /// <returns></returns>
         public static Dictionary<SongFromInternet, float> SearchYtVideos( string nameArtist, string nameSong)
         {
             YouTubeService youtube = CreateYouTubeService();
