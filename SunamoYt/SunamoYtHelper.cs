@@ -308,7 +308,7 @@ namespace SunamoYt
 
             List<string> addedYtCode = new List<string>();
             //, " Lyrics", " Lyrics Video", " Live", " Live At"
-            List<string> added = new List<string>(new string[] { "" });
+            List<string> added = new List<string>(new List<string> { "" });
             
             bool ukoncit = false;
             nameOfAllYTVideos = new List<SongFromInternet>();
