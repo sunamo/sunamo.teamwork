@@ -5,7 +5,6 @@ using sunamo.Essential;
 
 public partial class TranslateAbleHelper
 {
-
     /// <summary>
     /// Before usage is needed replace all chars like ¢
     /// A3 is to avoid creating still TextBox
@@ -64,8 +63,6 @@ public partial class TranslateAbleHelper
         var lower = between.ToLower();
         var lowerT = lower.Trim();
 
-
-
         if (SunamoTranslateConsts.alwaysStringsToTranslate.Contains(lowerT))
         {
             result = true; return result;
@@ -75,6 +72,24 @@ public partial class TranslateAbleHelper
         if (ConvertCamelConventionWithNumbers.IsCamelWithNumber(between) && !SH.ContainsDiacritic(between))
         {
             result = false; return result;
+        }
+
+        foreach (var item in SunamoTranslateConsts.newU)
+        {
+            if (between.Contains(item))
+            {
+                result = false;
+                return result;
+            }
+        }
+
+        foreach (var item in SunamoTranslateConsts.newL)
+        {
+            if (between.Contains(item))
+            {
+                result = false;
+                return result;
+            }
         }
 
         if (HtmlHelperText.IsHtmlEntity(between))
@@ -87,8 +102,6 @@ public partial class TranslateAbleHelper
         deli.Add(')');
 
         var tokens = SH.Split(between, deli);
-
-
 
         if (!isCzech)
         {
@@ -110,9 +123,6 @@ public partial class TranslateAbleHelper
         }
 
         var tokensL = SH.Split(lower, deli);
-
-        //CA.Trim(tokens);
-        //CA.Trim(tokensL);
 
         #region Contains mail
         if (tokens.Count < 4)
@@ -145,6 +155,30 @@ public partial class TranslateAbleHelper
             result = false; return result;
         }
         #endregion
+
+        #region Code
+        for (int i = 0; i < betweenT.Length; i++)
+        {
+            if (char.IsLetterOrDigit(betweenT[i]))
+            {
+                continue;
+            }
+            else
+            {
+                if (betweenT[i] == AllChars.colon)
+                {
+                    result = false;
+                    return result;
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
+        #endregion
+
+        
 
         #region ComplexInfoString
         ComplexInfoString s = new ComplexInfoString(between);
@@ -465,4 +499,3 @@ public partial class TranslateAbleHelper
         return result;
     }
 }
-

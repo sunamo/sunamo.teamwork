@@ -43,7 +43,6 @@ public class TranslateHelper
     public readonly string AlreadyTranslatedFileLong = AppData.ci.GetFileCommonSettings("CsTranslatedToEnLong.txt");
     private Dictionary<string, string> _csToEn = new Dictionary<string, string>();
 
-
     private TranslationClient _client = null;
 
     private TranslateHelper()

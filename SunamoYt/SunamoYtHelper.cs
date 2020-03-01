@@ -132,7 +132,7 @@ namespace SunamoYt
         /// <returns></returns>
         private static YouTubeService CreateYouTubeService()
         {
-           return new YouTubeService(new BaseClientService.Initializer()
+           var ys = new YouTubeService(new BaseClientService.Initializer()
             {
                 /* have used *FMBDWQ (sunamocz@gmail.com) before, 
                  * after remove ip adresses limiting, re-enable youtube api still:
@@ -142,6 +142,7 @@ namespace SunamoYt
                 ApiKey = changeQuotaExceededApiKeys.apiKey,
                 ApplicationName = "whatever"
             });
+            return ys;
         }
 
         public static IEnumerable GetComments(string ytCode)
