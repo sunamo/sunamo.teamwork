@@ -43,8 +43,6 @@ public partial class TranslateAbleHelper
     private static string s_between = null;
     private static SplitStringsData s_splitStringsData = null;
     public static BoolString isNameOfControl = null;
-
-
     public static bool IsToTranslate(string text)
     {
         return IsToTranslate(null, text, 0, null);

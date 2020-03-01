@@ -10,7 +10,12 @@ public class SunamoTranslateConsts
     {
     }
 
-    
+
+    /// <summary>
+    /// new google.maps.LatLng ( etc.
+    /// </summary>
+    public static List<string> newL = new List<string>(26);
+    public static List<string> newU = new List<string>(26);
 
     static SunamoTranslateConsts()
     {
