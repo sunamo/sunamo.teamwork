@@ -13,7 +13,6 @@ public partial class TranslateAbleHelper
     /// <param name="between"></param>
     /// <param name="charIndex"></param>
     /// <param name="txt"></param>
-    /// <returns></returns>
     public static bool IsToTranslate(SplitStringsData splitStringsData, string between, int charIndex, List<string> lines, AllowStrings allowString = null)
     {
         if (allowString == null)

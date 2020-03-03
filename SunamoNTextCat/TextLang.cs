@@ -69,7 +69,6 @@ public class TextLang
     /// Before use 
     /// </summary>
     /// <param name="text"></param>
-    /// <returns></returns>
     public static NTextCatResult GetLangs(string text)
     {
         string methodName = "GetLangs";
@@ -101,7 +100,6 @@ public class TextLang
     /// Must call Init() due to load determined words!
     /// </summary>
     /// <param name="text"></param>
-    /// <returns></returns>
     public static bool IsEnglish(string text)
     {
         if (!TranslateAbleHelper.IsToTranslate(text))
@@ -203,7 +201,6 @@ public class TextLang
     /// Must call Init() due to load determined words!
     /// </summary>
     /// <param name="text"></param>
-    /// <returns></returns>
     public static bool IsCzech(string text)
     {
         if (!TranslateAbleHelper.IsToTranslate(text))
@@ -229,4 +226,3 @@ public class TextLang
         return sumEn > sumCs;
     }
 }
-

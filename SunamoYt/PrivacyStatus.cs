@@ -9,4 +9,3 @@ public enum PrivacyStatus
     @public,
    unlisted
 }
-

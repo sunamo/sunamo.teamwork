@@ -25,7 +25,6 @@ public static class YouTubeHelper
     /// Direct edit
     /// </summary>
     /// <param name="l"></param>
-    /// <returns></returns>
     public static List<string> GetYtCodesFromUri(List<string> l)
         {
             for (int i = 0; i < l.Count; i++)
@@ -45,7 +44,6 @@ public static class YouTubeHelper
         /// </summary>
         /// <param name="name"></param>
         /// <param name="ytCodes"></param>
-        /// <returns></returns>
         public static async Task CreateNewPlaylist(string name, List<string> ytCodes)
         {
             CA.RemoveStringsEmpty(ytCodes);
