@@ -76,7 +76,6 @@ public class TranslateHelper
     /// </summary>
     /// <param name="input"></param>
     /// <param name="to"></param>
-    /// <returns></returns>
     public string Translate(string input, string to, string from = null)
     {
         if (from.Contains("cs") && to.Contains("en"))

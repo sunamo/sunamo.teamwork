@@ -7,4 +7,3 @@ public class AllowStrings
 {
     public bool tag = false;
 }
-

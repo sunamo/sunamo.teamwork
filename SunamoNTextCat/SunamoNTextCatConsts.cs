@@ -8,4 +8,3 @@ public class SunamoNTextCatConsts
     static string fileCzechWord = AppData.ci.GetFileCommonSettings("czechWords.txt");
     public static PpkOnDrive czechWords = new PpkOnDrive(fileCzechWord);
 }
-
