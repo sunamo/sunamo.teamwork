@@ -20,3 +20,4 @@ public class SplitStringsData
     public CollectionWithoutDuplicates<string> notToTranslate = new CollectionWithoutDuplicates<string>();
     public Dictionary<string, StringPaddingData> v = new Dictionary<string, StringPaddingData>();
 }
+

@@ -45,3 +45,4 @@ public class SunamoTranslateConsts
     /// </summary>
     private static List<string> s_sqlKeywords = CA.ToListString("sum", "id", "object", "objectproperty", "select", "in", "update", "delete", "insert", "inner", "join", "from", "group", "by", "top", "sysobjects", "*", "where", "and", "exec", "set", "newid");
 }
+

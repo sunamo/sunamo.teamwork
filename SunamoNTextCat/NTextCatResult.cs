@@ -8,3 +8,4 @@ public class NTextCatResult
     public List<LanguageInfo> langInfos;
     public List<double> probiability;
 }
+

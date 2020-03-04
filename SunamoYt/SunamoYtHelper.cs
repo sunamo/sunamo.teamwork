@@ -40,6 +40,7 @@ namespace SunamoYt
         /// </summary>
         /// <param name="nameArtist"></param>
         /// <param name="nameSong"></param>
+        /// <returns></returns>
         public static Dictionary<SongFromInternet, float> SearchYtVideos( string nameArtist, string nameSong)
         {
             YouTubeService youtube = CreateYouTubeService();
@@ -134,6 +135,7 @@ namespace SunamoYt
         /// 
         /// must set ThisApp.Name = "sunamo", ThisApp.Project = "SunamoCzAdmin"; and AppData.ci.GetRootFolder();
         /// </summary>
+        /// <returns></returns>
         private static YouTubeService CreateYouTubeService()
         {
            var ys = new YouTubeService(new BaseClientService.Initializer()

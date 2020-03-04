@@ -10,6 +10,7 @@ public class SunamoSlnGenHelper
     /// Working wit Microsoft.Build.Construction.SolutionFile which cant add new files
     /// </summary>
     /// <param name="solutionFilePath"></param>
+    /// <returns></returns>
     public static List<string> GetProjects(string solutionFilePath)
     {
         SolutionFile solutionFile = SolutionFile.Parse(solutionFilePath);
@@ -25,3 +26,4 @@ public class SunamoSlnGenHelper
         sln.Lo
     }
 }
+
