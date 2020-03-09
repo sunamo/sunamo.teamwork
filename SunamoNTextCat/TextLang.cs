@@ -7,7 +7,7 @@ using System.Linq;
 
 public class TextLang
 {
-    private static Type s_type = typeof(TextLang);
+    private static Type type = typeof(TextLang);
 
     private static EmbeddedResourcesH s_resources = null;
     private const string Wiki280Profile = "Profiles/Wiki280.profile.xml";
