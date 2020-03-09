@@ -106,7 +106,7 @@ public class TranslateHelper
     {
         if (_credential == null)
         {
-            throw new Exception("Please authenticate first, credential object cant be null");
+            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Please authenticate first, credential object cant be null");
         }
     }
 
