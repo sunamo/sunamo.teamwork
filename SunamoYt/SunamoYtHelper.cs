@@ -248,7 +248,7 @@ namespace SunamoYt
                 var status = item.Status;
                 //if (status == null)
                 //{
-                //    ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(),type, RH.CallingMethod(), "Status is null");
+                //    ThrowExceptions.Custom(Exc.GetStackTrace(),type, Exc.CallingMethod(), "Status is null");
                 //}
                 //else
                 //{

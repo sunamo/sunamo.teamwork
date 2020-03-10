@@ -1,4 +1,4 @@
-﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2;
 using Google.Cloud.Translation.V2;
 using System;
 using Google.Apis.Storage.v1;
@@ -10,8 +10,8 @@ using System.Collections.Generic;
 /// </summary>
 public class TranslateHelper
 {
+static Type type = typeof(TranslateHelper);
     private GoogleCredential _credential = null;
-
     public GoogleCredential AuthExplicit(string appName, string projectId, string jsonText)
     {
         if (_credential == null)
@@ -34,7 +34,6 @@ public class TranslateHelper
         }
         return _credential;
     }
-
     /// <summary>
     /// Due to saving and reading already translated cs to en in txt
     /// </summary>
@@ -42,14 +41,11 @@ public class TranslateHelper
     public readonly string AlreadyTranslatedFile = AppData.ci.GetFileCommonSettings("CsTranslatedToEn.txt");
     public readonly string AlreadyTranslatedFileLong = AppData.ci.GetFileCommonSettings("CsTranslatedToEnLong.txt");
     private Dictionary<string, string> _csToEn = new Dictionary<string, string>();
-
     private TranslationClient _client = null;
-
     private TranslateHelper()
     {
         // ctor must be empty due to calling AllProjectsSearchHelper.AuthGoogleTranslate which create instance and in its actual code is CheckCredentials which raise exception
     }
-
     public void Init()
     {
         var data = SF.GetAllElementsFile(AlreadyTranslatedFile);
@@ -65,11 +61,9 @@ public class TranslateHelper
                 }
             }
         }
-
         CheckCredentials();
         _client = TranslationClient.Create(_credential);
     }
-
     /// <summary>
     /// A2 = cs, en
     /// A3 = null, will be automatically determined
@@ -89,7 +83,6 @@ public class TranslateHelper
 #if DEBUG
         //DebugLogger.Instance.WriteLine($"Translate {input} from {from} to {to}");
 #endif
-
         var response = _client.TranslateText(input, to, from);
         var result = response.TranslatedText;
         if (from.Contains("cs") && to.Contains("en"))
@@ -101,15 +94,13 @@ public class TranslateHelper
         }
         return result;
     }
-
     private void CheckCredentials()
     {
         if (_credential == null)
         {
-            ThrowExceptions.Custom(RuntimeHelper.GetStackTrace(), type, RH.CallingMethod(),"Please authenticate first, credential object cant be null");
+            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Please authenticate first, credential object cant be null");
         }
     }
-
     public static bool IsToSaveInCsTranslateToEn(string first)
     {
         return SH.OccurencesOfStringIn(first, " ") < 3;
