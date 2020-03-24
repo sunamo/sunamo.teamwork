@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using sunamo.Essential;
 
 public partial class TranslateAbleHelper
@@ -43,17 +44,15 @@ public partial class TranslateAbleHelper
             result = false; return result;
         }
 
+        // REPLACEMENT CHARACTER
+        // used to replace an incoming character whose value is unknown or unrepresentable in Unicode
+        // compare the use of U + 001A as a control character to indicate the substitute function
         if (between.Contains('\uFFFD'.ToString()))
         {
             result = false; return result;
         }
 
         ThisApp.check = false;
-
-        if (between == "na rozd\u00EDl od")
-        {
-            ThisApp.check = true;
-        }
 
         bool isCzech = false;
         // extremely expensive for memory and cpu, instead of several second do the same a few minutes
@@ -124,6 +123,20 @@ public partial class TranslateAbleHelper
 
         var tokensL = SH.Split(lower, deli);
 
+        
+
+        var betweenT = between.Trim();
+
+        if (betweenT.Length < 4)
+        {
+            result = false; return result;
+        }
+
+        #region Wildcard
+       
+        #endregion
+
+        #region Special formats - uri, guid, etc.
         #region Contains mail
         if (tokens.Count < 4)
         {
@@ -137,14 +150,11 @@ public partial class TranslateAbleHelper
         }
         #endregion
 
-        var betweenT = between.Trim();
-
-        if (betweenT.Length < 4)
+        if (RegexHelper.rHtmlTag.IsMatch(between))
         {
             result = false; return result;
         }
 
-        #region Special formats - uri, guid, etc.
         if (RegexHelper.IsUri(between))
         {
             result = false; return result;
@@ -178,7 +188,58 @@ public partial class TranslateAbleHelper
         }
         #endregion
 
-        
+        Dictionary<char, int> lettersCount = SH.StatisticLetterChars(lower, StatisticLetterCharsStrategy.IgnoreCompletely, '.', AllChars.space, AllChars.slash, 'm', 'd', 'y');
+        if (lettersCount.Count == 0)
+        {
+            result = false; return result;
+        }
+    
+            // Must again coz in first I ignored slash
+            lettersCount = SH.StatisticLetterChars(lower, StatisticLetterCharsStrategy.AddAsFirst,  AllChars.bs, AllChars.slash);
+
+            if (lettersCount.ContainsKey(AllChars.slash))
+            {
+                // /i/Apps
+                
+                    result = false; return result;
+                
+            }
+            else if (lettersCount.ContainsKey(AllChars.bs))
+            {
+                
+                    result = false; return result;
+                
+            }
+
+        // Height(4,1), Height (4,1)
+        //if (Wildcard.IsMatch(between, Regex.Escape("*(*,*)")))
+        var lettersSqlTable = CA.ToList<char>(AllChars.comma, AllChars.lb, AllChars.rb);
+        lettersCount = SH.StatisticLetterChars(lower, StatisticLetterCharsStrategy.AddAsFirst, lettersSqlTable.ToArray());
+        if(lettersCount[AllChars.comma] == 1 && lettersCount[AllChars.lb] == 1 && lettersCount[AllChars.rb] ==1)
+        {
+            foreach (var item in lettersSqlTable)
+            {
+                lettersCount.Remove(item);
+            }
+
+            bool allLettersDigitOrSpace = true;
+
+            foreach (var item in lettersCount)
+            {
+                if (!char.IsLetterOrDigit(item.Key) && item.Key != AllChars.space)
+                {
+                    allLettersDigitOrSpace = false;
+                    break;
+                }
+            }
+
+            if (allLettersDigitOrSpace)
+            {
+                result = false; return result;
+            }
+            
+        }
+
 
         #region ComplexInfoString
         ComplexInfoString s = new ComplexInfoString(between);
@@ -210,12 +271,31 @@ public partial class TranslateAbleHelper
         #endregion
 
         #region Contains
+        if (!between.Contains(AllStrings.space))
+        {
+            if (between.Contains(AllStrings.equal) || between.Contains(AllStrings.ampersand))
+            {
+                // Dont contains space, I can afford. url arguments
+                result = false; return result;
+            }
+        }
+
         var lt = CA.ToListString(CA.JoinVariableAndArray(AllChars.dot, AllChars.numericChars));
 
         CA.RemoveStartingWith("n'", tokensL);
         tokensL.RemoveAll(d => BTS.IsInt(d));
 
         var includedSqlKeywords = CA.CompareList(tokensL, SunamoTranslateConsts.sqlKeywords);
+
+        if (between.Contains("data-"))
+        {
+            result = false; return result;
+        }
+
+        if (between.Contains(" + "))
+        {
+            result = false; return result;
+        }
 
         // strings are often splitted, so > 1 must be succufient
         if (includedSqlKeywords.Count > 1 && tokensL.Count <= includedSqlKeywords.Count)
@@ -298,9 +378,25 @@ public partial class TranslateAbleHelper
         {
             result = false; return result;
         }
+
+        if (between.Contains(AllStrings.colon))
+        {
+            var partsColon = SH.Split(SH.Trim(between, ";"), AllStrings.colon);
+            CA.Trim(partsColon);
+            var decl = partsColon[0];
+            if (HtmlHelperText.IsCssDeclarationName(decl))
+            {
+                result = false; return result;
+            }
+        }
         #endregion
 
         #region Special equal
+        if (CA.IsEqualToAnyElement<string>(lowerT, CA.ToListString("true", "false", "unplated")))
+        {
+            result = false; return result;
+        }
+
         if (HtmlHelperText.IsCssDeclarationName(SH.Trim(between, ";")))
         {
             result = false; return result;
@@ -335,26 +431,19 @@ public partial class TranslateAbleHelper
         //} 
         #endregion
 
-        #region Start with
+        #region Start/End with
         // Contains awesome or targetsize
         if (CA.StartWith(CA.ToListString("./", "exec", "cmd", "\\uf", "targetsize", "mail:", "asp:", "image-", "http", "og:", "no-", "mif-", "data-", "text/", "fg-", "bg-", "application/", "javascript:"
             ), lower) != null)
         {
             result = false; return result;
         }
-        #endregion
+        
 
         if (CA.AnyElementEndsWith(betweenT, ";") && !SH.ContainsDiacritic(betweenT))
         {
             result = false; return result;
         }
-
-        #region Equal
-        if (CA.IsEqualToAnyElement<string>(lowerT, CA.ToListString("true", "false", "unplated")))
-        {
-            result = false; return result;
-        }
-        #endregion
 
         if (!between.Contains(AllStrings.space))
         {
@@ -398,7 +487,6 @@ public partial class TranslateAbleHelper
             {
                 result = false; return result;
             }
-
             else if (between.StartsWith("/") && between.Contains(";"))
             {
                 result = false; return result;
@@ -407,14 +495,9 @@ public partial class TranslateAbleHelper
             {
                 result = false; return result;
             }
+            
 
 
-
-            if (between.Contains(AllStrings.equal) || between.Contains(AllStrings.ampersand))
-            {
-                // Dont contains space, I can afford. url arguments
-                result = false; return result;
-            }
             //if (!SH.ContainsOnlyCase(between, true) && !SH.ContainsOnlyCase(between, false))
             //{
             //    // equalTo etc.
@@ -422,17 +505,17 @@ public partial class TranslateAbleHelper
             //}
 
         }
-
-        if (between.Contains(AllStrings.colon))
+        else
         {
-            var partsColon = SH.Split(SH.Trim(between, ";"), AllStrings.colon);
-            CA.Trim(partsColon);
-            var decl = partsColon[0];
-            if (HtmlHelperText.IsCssDeclarationName(decl))
+             if (between.EndsWith(" ("))
             {
+                //Tag (
                 result = false; return result;
             }
         }
+        #endregion
+
+        
 
         var lone = lower[0];
         var ltwo = lower[1];
@@ -447,6 +530,7 @@ public partial class TranslateAbleHelper
 
         // user32.dll
         var ext = FS.GetExtension(lower).TrimStart(AllChars.dot);
+
         if (AllExtensionsHelper.allExtensionsWithoutDot.ContainsKey(ext))
         {
             result = false; return result;
@@ -468,10 +552,6 @@ public partial class TranslateAbleHelper
             {
                 result = false; return result;
             }
-        }
-
-        if (result)
-        {
         }
 
         #region System.Windows.Controls
