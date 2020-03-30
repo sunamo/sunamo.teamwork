@@ -36,17 +36,23 @@ namespace SunamoYt
         }
 
         /// <summary>
-        /// A1 is needed due to find videos on youtube
+        /// A1 is needed due to find videos on youtube. if is null, no videos from yt is getted
         /// </summary>
         /// <param name="nameArtist"></param>
         /// <param name="nameSong"></param>
         /// <returns></returns>
         public static Dictionary<SongFromInternet, float> SearchYtVideos( string nameArtist, string nameSong)
         {
+            Dictionary<SongFromInternet, float> sm = new Dictionary<SongFromInternet, float>();
+
+            if (nameArtist == null)
+            {
+                return sm ;
+            }
             YouTubeService youtube = CreateYouTubeService();
 
             List<SongFromInternet> nameOfAllYTVideos = null;
-            var sm = GetVideos(ref nameOfAllYTVideos, 3, nameArtist, nameSong, ref youtube);
+            sm = GetVideos(ref nameOfAllYTVideos, 3, nameArtist, nameSong, ref youtube);
 
             var l = CA.ToList<SongFromInternet>(sm.Keys);
             RemoveAlreadyExistedVideos(sm, l);
