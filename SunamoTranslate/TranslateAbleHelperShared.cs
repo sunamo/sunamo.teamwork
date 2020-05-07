@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -273,7 +273,7 @@ public partial class TranslateAbleHelper
         #region Contains
         if (!between.Contains(AllStrings.space))
         {
-            if (between.Contains(AllStrings.equal) || between.Contains(AllStrings.ampersand))
+            if (between.Contains(AllStrings.equals) || between.Contains(AllStrings.amp))
             {
                 // Dont contains space, I can afford. url arguments
                 result = false; return result;
@@ -332,10 +332,10 @@ public partial class TranslateAbleHelper
         }
 
         // curly bracket 
-        if (between.Contains(AllStrings.cbl) && between.Contains(AllStrings.cbr))
+        if (between.Contains(AllStrings.lcub) && between.Contains(AllStrings.rcub))
         {
-            var occl = SH.ReturnOccurencesOfString(between, AllStrings.cbl);
-            var occr = SH.ReturnOccurencesOfString(between, AllStrings.cbr);
+            var occl = SH.ReturnOccurencesOfString(between, AllStrings.lcub);
+            var occr = SH.ReturnOccurencesOfString(between, AllStrings.rcub);
             if (occl.Count == occr.Count)
             {
                 for (int i = 0; i < occl.Count; i++)
