@@ -46,23 +46,29 @@ static Type type = typeof(TranslateHelper);
     {
         // ctor must be empty due to calling AllProjectsSearchHelper.AuthGoogleTranslate which create instance and in its actual code is CheckCredentials which raise exception
     }
+    bool initialized = false;
+
     public void Init()
     {
-        var data = SF.GetAllElementsFile(AlreadyTranslatedFile);
-        foreach (var line in data)
+        if (!initialized)
         {
-            var key = line[0];
-            if (!_csToEn.ContainsKey(key))
+            initialized = true;
+            var data = SF.GetAllElementsFile(AlreadyTranslatedFile);
+            foreach (var line in data)
             {
-                // Check for uncomplete file
-                if (line.Count > 1)
+                var key = line[0];
+                if (!_csToEn.ContainsKey(key))
                 {
-                    _csToEn.Add(key, line[1]);
+                    // Check for uncomplete file
+                    if (line.Count > 1)
+                    {
+                        _csToEn.Add(key, line[1]);
+                    }
                 }
             }
+            CheckCredentials();
+            _client = TranslationClient.Create(_credential);
         }
-        CheckCredentials();
-        _client = TranslationClient.Create(_credential);
     }
     /// <summary>
     /// A2 = cs, en
