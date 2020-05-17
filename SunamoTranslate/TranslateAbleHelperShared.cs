@@ -68,10 +68,11 @@ public partial class TranslateAbleHelper
         }
 
         // TODO: Should to manually decide, can be name of class but also (czech) word 
-        if (ConvertCamelConventionWithNumbers.IsCamelWithNumber(between) && !SH.ContainsDiacritic(between))
-        {
-            result = false; return result;
-        }
+        // Commented coz also words like Hello, beautiful marked as not to translate
+        //if (ConvertCamelConventionWithNumbers.IsCamelWithNumber(between) && !SH.ContainsDiacritic(between))
+        //{
+        //    result = false; return result;
+        //}
 
         foreach (var item in SunamoTranslateConsts.newU)
         {
