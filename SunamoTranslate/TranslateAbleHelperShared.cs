@@ -6,6 +6,9 @@ using sunamo.Essential;
 
 public partial class TranslateAbleHelper
 {
+    static StringBuilder fromStart = new StringBuilder();
+    static StringBuilder fromEnd = new StringBuilder();
+
     /// <summary>
     /// Before usage is needed replace all chars like ¢
     /// A3 is to avoid creating still TextBox
@@ -59,8 +62,11 @@ public partial class TranslateAbleHelper
         //isCzech = TextLang.IsCzech(between); 
         isCzech = SH.ContainsDiacritic(between);
 
-        var lower = between.ToLower();
-        var lowerT = lower.Trim();
+        string lower = string.Empty;
+        string lowerT = string.Empty;
+
+        lower = between.ToLower();
+        lowerT = lower.Trim();
 
         if (SunamoTranslateConsts.alwaysStringsToTranslate.Contains(lowerT))
         {
@@ -151,9 +157,21 @@ public partial class TranslateAbleHelper
         }
         #endregion
 
+        bool wrappingTag = false;
+
         if (RegexHelper.rHtmlTag.IsMatch(between))
         {
-            result = false; return result;
+            between = TrimerTags.TrimWrappingTag(between, fromStart, fromEnd);
+
+            if (fromStart.Length == 0)
+            {
+                result = false; return result;
+            }
+
+            wrappingTag = true;
+
+            lower = between.ToLower();
+            lowerT = lower.Trim();
         }
 
         if (RegexHelper.IsUri(between))
@@ -200,16 +218,18 @@ public partial class TranslateAbleHelper
 
             if (lettersCount.ContainsKey(AllChars.slash))
             {
-                // /i/Apps
-                
-                    result = false; return result;
-                
+            // /i/Apps
+            if (lettersCount[AllChars.slash] > 0)
+            {
+                result = false; return result;
             }
+        }
             else if (lettersCount.ContainsKey(AllChars.bs))
             {
-                
-                    result = false; return result;
-                
+            if (lettersCount[AllChars.bs] > 0)
+            {
+                result = false; return result;
+            }
             }
 
         // Height(4,1), Height (4,1)
@@ -565,14 +585,29 @@ public partial class TranslateAbleHelper
         ////DebugLogger.Instance.WriteLine(between);
         ////DebugLogger.Instance.WriteLine("");
 
-        if (outsideReplaceBadChars)
+        bool continue2 = true;
+
+        if (outsideReplaceBadChars || wrappingTag)
         {
-            toTranslate.Add(between);
-            if (v != null)
+            if (wrappingTag)
             {
-                if (v.ContainsKey(between))
+                //outsideReplaceBadChars = false;
+
+                if (toTranslate.c.Contains(between))
                 {
-                    v.Add(between, new StringPaddingData());
+                    continue2 = false;
+                }
+            }
+
+            if (continue2)
+            {
+                toTranslate.Add(between);
+                if (v != null)
+                {
+                    if (v.ContainsKey(between))
+                    {
+                        v.Add(between, new StringPaddingData());
+                    }
                 }
             }
         }

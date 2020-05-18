@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Credentials\GDataTranslate\GDataTranslate.csproj" />
     <ProjectReference Include="..\..\sunamo\shared\shared.csproj" />
+    <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj" />
     <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj" />
     
   </ItemGroup>

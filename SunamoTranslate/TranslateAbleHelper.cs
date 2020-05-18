@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 public partial class TranslateAbleHelper
 {
-    public static List<string> toTranslate = new List<string>();
+    public static CollectionWithoutDuplicates<string> toTranslate = new CollectionWithoutDuplicates<string>();
     public static List<string> notToTranslate = new List<string>();
 
     public static bool outsideReplaceBadChars = false;
