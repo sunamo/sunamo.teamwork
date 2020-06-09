@@ -5,6 +5,7 @@ using Google.Apis.Storage.v1;
 using Google.Apis.Services;
 using Google.Apis.Translate.v2;
 using System.Collections.Generic;
+using System.Linq;
 /// <summary>
 /// Must be instance, because calling static method dont call constructor and will throw not implemented exception
 /// </summary>
@@ -86,6 +87,14 @@ static Type type = typeof(TranslateHelper);
                 return _csToEn[input];
             }
         }
+        else if (from.Contains("en") && to.Contains("cs"))
+        {
+            if (_csToEn.ContainsValue(input))
+            {
+                return _csToEn.FirstOrDefault(x => x.Value == input).Key;
+            }
+        }
+
 #if DEBUG
         //DebugLogger.Instance.WriteLine($"Translate {input} from {from} to {to}");
 #endif
@@ -96,6 +105,13 @@ static Type type = typeof(TranslateHelper);
             if (TranslateHelper.IsToSaveInCsTranslateToEn(input))
             {
                 SF.AppendToFile(AlreadyTranslatedFile, SF.PrepareToSerialization2(CA.ToListString(input, result)));
+            }
+        }
+        else if (from.Contains("en") && to.Contains("cs"))
+        {
+            if (TranslateHelper.IsToSaveInCsTranslateToEn(input))
+            {
+                SF.AppendToFile(AlreadyTranslatedFile, SF.PrepareToSerialization2(CA.ToListString(result, input)));
             }
         }
         return result;
