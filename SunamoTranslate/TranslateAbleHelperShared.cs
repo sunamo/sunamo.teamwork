@@ -9,6 +9,8 @@ public partial class TranslateAbleHelper
     static StringBuilder fromStart = new StringBuilder();
     static StringBuilder fromEnd = new StringBuilder();
 
+    
+
     /// <summary>
     /// Before usage is needed replace all chars like ¢
     /// A3 is to avoid creating still TextBox

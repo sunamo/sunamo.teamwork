@@ -10,6 +10,16 @@ using System.Threading.Tasks;
 /// </summary>
 public class SplitStringsData
 {
+    int serieOfInstance = 0;
+    int serieOfInstanceStatic = 0;
+    public static SplitStringsData Instance = new SplitStringsData();
+
+    private SplitStringsData()
+    {
+        serieOfInstanceStatic++;
+        serieOfInstance = serieOfInstanceStatic;
+    }
+
     /// <summary>
     /// Only translateable strings as is filled in GetBetween
     /// </summary>

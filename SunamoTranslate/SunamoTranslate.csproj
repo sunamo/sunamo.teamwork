@@ -1,32 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="InsertIntoXlfAndConstantCsUC-8fd66218c999.json" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Google.Api.Gax.Rest" Version="3.0.0" />
     <PackageReference Include="Google.Apis.Core" Version="1.45.0" />
     <PackageReference Include="Google.Cloud.Storage.V1" Version="3.0.0" />
     <PackageReference Include="Google.Cloud.Translation.V2" Version="2.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\Credentials\GDataTranslate\GDataTranslate.csproj" />
     <ProjectReference Include="..\..\sunamo\shared\shared.csproj" />
     <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj" />
     <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj" />
-    
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="Diacritics">
       <HintPath>..\dll\netstandard2.0\Diacritics.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>

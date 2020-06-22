@@ -13,7 +13,14 @@ public class TranslateHelper
 {
 static Type type = typeof(TranslateHelper);
     private GoogleCredential _credential = null;
-    public GoogleCredential AuthExplicit(string appName, string projectId, string jsonText)
+    /// <summary>
+    /// now return void instead GoogleCredential because is authorized in GDataTranslate project
+    /// </summary>
+    /// <param name="appName"></param>
+    /// <param name="projectId"></param>
+    /// <param name="jsonText"></param>
+    /// <returns></returns>
+    public void AuthExplicit(string appName, string projectId, string jsonText)
     {
         if (_credential == null)
         {
@@ -33,7 +40,7 @@ static Type type = typeof(TranslateHelper);
                 ApplicationName = appName,
             });
         }
-        return _credential;
+        //return _credential;
     }
     /// <summary>
     /// Due to saving and reading already translated cs to en in txt
