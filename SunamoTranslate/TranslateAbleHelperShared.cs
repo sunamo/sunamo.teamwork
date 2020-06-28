@@ -20,11 +20,22 @@ public partial class TranslateAbleHelper
     /// <param name="charIndex"></param>
     /// <param name="txt"></param>
     /// <returns></returns>
-    public static bool IsToTranslate(SplitStringsData splitStringsData, string between, int charIndex, List<string> lines, AllowStrings allowString = null)
+    public static bool IsToTranslate(SplitStringsData splitStringsData, string between, int charIndex, List<string> lines, IsToTranslateArgs a  = null)
     {
-        if (allowString == null)
+        if (a == null)
         {
-            allowString = new AllowStrings();
+            a = new IsToTranslateArgs();
+        }
+
+        if (CA.EndsWith(a.file, FiltersNotTranslateAble.ending))
+        {
+            result = false;
+            return result;
+        }
+        if (CA.ContainsAnyFromElementBool(a.file, FiltersNotTranslateAble.contains))
+        {
+            result = false;
+            return result;
         }
 
         between = between.Trim();
@@ -546,7 +557,7 @@ public partial class TranslateAbleHelper
         var two = between[1];
 
         //<ItemsPanelTemplate   xmlns, <br /, Needed before replace show strings which will be traslate and not - swithc between them
-        if (AllChars.lt == one && !allowString.tag)
+        if (AllChars.lt == one && !a.allowString.tag)
         {
             result = false; return result;
         }

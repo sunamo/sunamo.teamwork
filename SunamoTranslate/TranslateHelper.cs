@@ -87,6 +87,11 @@ static Type type = typeof(TranslateHelper);
     /// <returns></returns>
     public string Translate(string input, string to, string from = null)
     {
+        if (input == "Nepodarilo se nacist prvek, pridejte nejake a akci opakujte")
+        {
+
+        }
+
         if (from.Contains("cs") && to.Contains("en"))
         {
             if (_csToEn.ContainsKey(input))
@@ -121,6 +126,10 @@ static Type type = typeof(TranslateHelper);
                 SF.AppendToFile(AlreadyTranslatedFile, SF.PrepareToSerialization2(CA.ToListString(result, input)));
             }
         }
+
+#if DEBUG
+        DebugLogger.Instance.WriteLine("Translated: " + result);
+#endif
         return result;
     }
     private void CheckCredentials()
