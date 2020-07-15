@@ -27,12 +27,12 @@ public partial class TranslateAbleHelper
             a = new IsToTranslateArgs();
         }
 
-        if (CA.EndsWith(a.file, FiltersNotTranslateAble.ending))
+        if (CA.EndsWith(a.file, FiltersNotTranslateAble.Instance.ending))
         {
             result = false;
             return result;
         }
-        if (CA.ContainsAnyFromElementBool(a.file, FiltersNotTranslateAble.contains))
+        if (CA.ContainsAnyFromElementBool(a.file, FiltersNotTranslateAble.Instance.contains))
         {
             result = false;
             return result;
