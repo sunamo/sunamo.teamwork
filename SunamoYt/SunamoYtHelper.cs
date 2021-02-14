@@ -3,6 +3,7 @@ using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 using sunamo;
 using sunamo.Constants;
+using sunamo.Helpers;
 using sunamo.Html;
 using System;
 using System.Collections;
@@ -25,7 +26,7 @@ namespace SunamoYt
         public static string GetPageTitle(string codeyt)
         {
             var uri = UriWebServices.YouTube.GetLinkToVideo(codeyt);
-            var html = HttpRequestHelper.GetResponseText(uri, HttpMethod.Get, null);
+            var html = HttpClientHelper.GetResponseText(uri, HttpMethod.Get, null);
 
             var hd = HtmlAgilityHelper.CreateHtmlDocument();
             hd.LoadHtml(html);
@@ -81,7 +82,7 @@ namespace SunamoYt
                         Console.WriteLine("Download HTML for searching " + nas);
                         //riterEventLog.WriteToMainAppLog(, System.Diagnostics.EventLogeEntr);
 
-                        html = HttpRequestHelper.GetResponseText(ytSearch, HttpMethod.Get, null);
+                        html = HttpClientHelper.GetResponseText(ytSearch, HttpMethod.Get, null);
 
                         var hd = HtmlAgilityHelper.CreateHtmlDocument();
                         hd.LoadHtml(html);
