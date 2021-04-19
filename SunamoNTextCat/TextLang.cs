@@ -229,4 +229,3 @@ public class TextLang
         return sumEn > sumCs;
     }
 }
-

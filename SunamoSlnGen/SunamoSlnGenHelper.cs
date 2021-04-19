@@ -26,4 +26,3 @@ public class SunamoSlnGenHelper
         sln.Lo
     }
 }
-

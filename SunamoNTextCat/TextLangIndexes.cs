@@ -27,4 +27,3 @@ public class TextLangIndexes
         en = double.Parse(line[2]);
     }
 }
-

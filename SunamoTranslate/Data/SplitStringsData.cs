@@ -58,4 +58,3 @@ public class SplitStringsData
         return sbMessage.ToString();
     }
 }
-
