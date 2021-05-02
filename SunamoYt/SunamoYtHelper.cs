@@ -3,6 +3,7 @@ using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 using sunamo;
 using sunamo.Constants;
+using sunamo.Essential;
 using sunamo.Helpers;
 using sunamo.Html;
 using System;
@@ -77,9 +78,9 @@ namespace SunamoYt
 #if DEBUG
                         //html = TF.ReadFile(DefaultPaths.sunamoProject + "HTMLPage1.html");
 #elif !DEBUG
-                        
+
 #endif
-                        Console.WriteLine("Download HTML for searching " + nas);
+                        TypedSunamoLogger.Instance.Information("Download HTML for searching " + nas);
                         //riterEventLog.WriteToMainAppLog(, System.Diagnostics.EventLogeEntr);
 
                         html = HttpClientHelper.GetResponseText(ytSearch, HttpMethod.Get, null);
@@ -106,11 +107,11 @@ namespace SunamoYt
                             }
                         }
 
-                        Console.WriteLine(nameOfAllYTVideos.Count + " result parsed from yt search result");
+                        TypedSunamoLogger.Instance.Information(nameOfAllYTVideos.Count + " result parsed from yt search result");
 
                         bool ukoncit = AddWithSimilarity(nameOfAllYTVideos, sm, nameArtist + AllStrings.swd + nameSong);
 
-                        Console.WriteLine(sm.Count + " results has probality >= 0.5");
+                        TypedSunamoLogger.Instance.Information(sm.Count + " results has probality >= 0.5");
 
                         int i = 0;
                     }

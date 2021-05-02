@@ -12,7 +12,7 @@ using Google.Apis.Upload;
 using Google.Apis.Util.Store;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
-
+using sunamo.Essential;
 
 /// <summary>
 /// Must be in ConsoleApp1, with SunamoCzAdmin is only two solutions which are allowed to import YouTube API
@@ -97,8 +97,8 @@ public static class YouTubeHelper
                 newPlaylistItem.Snippet.ResourceId.VideoId = item;
                 newPlaylistItem = await youtubeService.PlaylistItems.Insert(newPlaylistItem, "snippet").ExecuteAsync();
 
-                Console.WriteLine("Added " + item);
-                //Console.WriteLine("Playlist item id {0} was added to playlist id {1}.", newPlaylistItem.Id, newPlaylist.Id);
+            TypedSunamoLogger.Instance.Information("Added " + item);
+                //CL.WriteLine("Playlist item id {0} was added to playlist id {1}.", newPlaylistItem.Id, newPlaylist.Id);
             }
         }
     }
