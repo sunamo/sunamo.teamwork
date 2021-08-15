@@ -157,7 +157,7 @@ public class TextLang
 
                 s_textLangIndexes.Add(item, new TextLangIndexes() { text = item, cs = cs2, en = en2 });
 
-                SF.AppendToFile(file, SF.PrepareToSerialization2(item, cs2, en2));
+                SF.AppendToFile(file, SF.PrepareToSerialization(item, cs2, en2));
             }
             else
             {
