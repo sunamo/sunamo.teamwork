@@ -23,6 +23,6 @@ public class SunamoSlnGenHelper
     public static List<string> s()
     {
         SlnFile sln = new SlnFile();
-        sln.Lo
+        return null;
     }
 }

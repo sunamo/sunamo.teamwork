@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -10,7 +10,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo.notmine\SlnGen.Common\SlnGen.Common.csproj" />
+    <ProjectReference Include="..\..\sunamo.notmine\SlnGen.Common\SlnGen.Common.sunamo.csproj" />
     <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj" />
   </ItemGroup>
 </Project>

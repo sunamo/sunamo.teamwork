@@ -474,7 +474,7 @@ public partial class TranslateAbleHelper
         }
         
 
-        if (CA.AnyElementEndsWith(betweenT, ";") && !SH.ContainsDiacritic(betweenT))
+        if (CA.EndsWithAnyElement(betweenT, ";") && !SH.ContainsDiacritic(betweenT))
         {
             result = false; return result;
         }
