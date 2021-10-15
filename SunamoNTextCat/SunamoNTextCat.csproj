@@ -13,7 +13,7 @@
   <ItemGroup>
     <PackageReference Include="Google.Apis.Core" Version="1.45.0" />
     <PackageReference Include="NTextCat" Version="0.3.65" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\sunamo\shared\shared.csproj" />
