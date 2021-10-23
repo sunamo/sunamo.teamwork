@@ -1,15 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version='1.0' encoding='utf-8'?>
+
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
+   <TargetFramework>net5.0-windows</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.45.0.1929" />
+    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.45.0.1929"></PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Credentials\GDataYoutube\GDataYoutube.csproj" />
-    <ProjectReference Include="..\..\sunamo\shared\shared.csproj" />
-    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj" />
+    <ProjectReference Include="..\..\Credentials\GDataYoutube\GDataYoutube.csproj"></ProjectReference>
+    <ProjectReference Include="..\..\sunamo\shared\shared.csproj"></ProjectReference>
+    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj"></ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="HtmlAgilityPack">

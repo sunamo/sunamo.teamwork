@@ -4,19 +4,28 @@
     <TargetFramework>net5.0-windows</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="InsertIntoXlfAndConstantCsUC-8fd66218c999.json" />
+    <None Remove="InsertIntoXlfAndConstantCsUC-8fd66218c999.json">
+    </None>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Api.Gax.Rest" Version="3.0.0" />
-    <PackageReference Include="Google.Apis.Core" Version="1.45.0" />
-    <PackageReference Include="Google.Cloud.Storage.V1" Version="3.0.0" />
-    <PackageReference Include="Google.Cloud.Translation.V2" Version="2.0.0" />
+    <PackageReference Include="Google.Api.Gax.Rest" Version="3.0.0">
+    </PackageReference>
+    <PackageReference Include="Google.Apis.Core" Version="1.45.0">
+    </PackageReference>
+    <PackageReference Include="Google.Cloud.Storage.V1" Version="3.0.0">
+    </PackageReference>
+    <PackageReference Include="Google.Cloud.Translation.V2" Version="2.0.0">
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Credentials\GDataTranslate\GDataTranslate.csproj" />
-    <ProjectReference Include="..\..\sunamo\shared\shared.csproj" />
-    <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj" />
-    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj" />
+    <ProjectReference Include="..\..\Credentials\GDataTranslate\GDataTranslate.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\shared\shared.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\SunamoCode\SunamoCode.csproj">
+    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj">
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Diacritics">

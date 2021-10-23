@@ -28,10 +28,6 @@ public partial class TranslateAbleHelper
                 }
             }
 
-
-            if (ThisApp.check)
-            {
-            }
             s_result = value;
         }
         get

@@ -68,7 +68,6 @@ public partial class TranslateAbleHelper
             result = false; return result;
         }
 
-        ThisApp.check = false;
 
         bool isCzech = false;
         // extremely expensive for memory and cpu, instead of several second do the same a few minutes
@@ -458,7 +457,7 @@ public partial class TranslateAbleHelper
         //    var ls = lines[line].Trim();
 
         //    // If i is comment
-        //    if (ls.StartsWith("//"))
+        //    if (ls.StartsWith(CSharpConsts.lc))
         //    {
         //        result = false;return result;
         //    }
