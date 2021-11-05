@@ -56,8 +56,7 @@ public class ChangeQuotaExceededApiKeys
     /// <param name="dex"></param>
     private  void TrySetUpNewApiKey(int dex)
     {
-       
-        if (YouTubeConsts.gDataYoutubeApiKeys.Length() > dex)
+        if (YouTubeConsts.gDataYoutubeApiKeys.Count > dex)
         {
             apiKeyIndex = dex;
             apiKey = YouTubeConsts.gDataYoutubeApiKeys[dex];
