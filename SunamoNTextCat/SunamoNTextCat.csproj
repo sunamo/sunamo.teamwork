@@ -26,8 +26,6 @@
     </ProjectReference>
     <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj">
     </ProjectReference>
-    <ProjectReference Include="..\SunamoTranslate\SunamoTranslate.csproj">
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="NTextCat">
