@@ -2,7 +2,7 @@
 
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-   <TargetFramework>net5.0-windows</TargetFramework>
+   <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="SlnGen" Version="2.2.30">
