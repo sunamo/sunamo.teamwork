@@ -6,9 +6,6 @@ using sunamo.Values;
 
 public class SunamoTranslateConsts
 {
-    public static void InitializeNotTranslateAble()
-    {
-    }
 
 
     /// <summary>
