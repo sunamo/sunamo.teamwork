@@ -1,31 +1,22 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Core14.profile.xml">
-    </None>
-    <None Remove="Profiles\Wiki280.profile.xml">
-    </None>
+    <None Remove="Core14.profile.xml"></None>
+    <None Remove="Profiles\Wiki280.profile.xml"></None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Profiles\Wiki280.profile.xml">
-    </EmbeddedResource>
+    <EmbeddedResource Include="Profiles\Wiki280.profile.xml"></EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Core" Version="1.45.0">
-    </PackageReference>
-    <PackageReference Include="NTextCat" Version="0.3.65">
-    </PackageReference>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0">
-    </PackageReference>
+    <PackageReference Include="Google.Apis.Core" Version="1.45.0"></PackageReference>
+    <PackageReference Include="NTextCat" Version="0.3.65"></PackageReference>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0"></PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\sunamo\shared\shared.csproj">
-    </ProjectReference>
-    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj">
-    </ProjectReference>
+    <ProjectReference Include="..\..\sunamo\shared\shared.csproj"></ProjectReference>
+    <ProjectReference Include="..\..\sunamo\sunamo\sunamo.csproj"></ProjectReference>
     <ProjectReference Include="..\SunamoTranslate\SunamoTranslate.csproj" />
   </ItemGroup>
   <ItemGroup>
