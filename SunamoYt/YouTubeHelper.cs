@@ -5,7 +5,6 @@ using System.IO;
 using System.Reflection;
 using System.Threading;
 using System.Threading.Tasks;
-using GDataYouTube;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using Google.Apis.Upload;
@@ -13,6 +12,7 @@ using Google.Apis.Util.Store;
 using Google.Apis.YouTube.v3;
 using Google.Apis.YouTube.v3.Data;
 using sunamo.Essential;
+using SunamoYt;
 
 /// <summary>
 /// Must be in ConsoleApp1, with SunamoCzAdmin is only two solutions which are allowed to import YouTube API
@@ -38,8 +38,15 @@ public static class YouTubeHelper
             return l;
         }
 
-    
-
+    public static Stream GenerateStreamFromString(string s)
+    {
+        var stream = new MemoryStream();
+        var writer = new StreamWriter(stream);
+        writer.Write(s);
+        writer.Flush();
+        stream.Position = 0;
+        return stream;
+    }
         /// <summary>
         /// Cant be use in UWP app because access publicly to c:\Users and app throw exception
         /// </summary>
@@ -53,8 +60,8 @@ public static class YouTubeHelper
             // Neustale mi to vytvari playlisty na puvodnim sunamocz@gmail.com, i prtesto ze json je stazeny se smutekutek
             #region MyRegion
             UserCredential credential;
-        var d = new EmbeddedResourcesH(typeof(YouTubeConsts).Assembly, "GDataYoutube");
-        using (var stream = d.GetStream( YouTubeConsts.secret))
+        //var d = new EmbeddedResourcesH(typeof(YouTubeConsts).Assembly, "GDataYoutube");
+        using (var stream = GenerateStreamFromString( SunamoYtHelper.ytConsts.secret))
             {
                 credential = await GoogleWebAuthorizationBroker.AuthorizeAsync(
                     GoogleClientSecrets.Load(stream).Secrets,

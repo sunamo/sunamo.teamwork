@@ -1,8 +1,9 @@
-﻿using GDataYouTube;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
+using SunamoYt;
 
 
 public class ChangeQuotaExceededApiKeys
@@ -56,10 +57,10 @@ public class ChangeQuotaExceededApiKeys
     /// <param name="dex"></param>
     private  void TrySetUpNewApiKey(int dex)
     {
-        if (YouTubeConsts.gDataYoutubeApiKeys.Count > dex)
+        if (SunamoYtHelper.ytConsts.gDataYoutubeApiKeys.Count > dex)
         {
             apiKeyIndex = dex;
-            apiKey = YouTubeConsts.gDataYoutubeApiKeys[dex];
+            apiKey = SunamoYtHelper.ytConsts.gDataYoutubeApiKeys[dex];
         }
     }
 

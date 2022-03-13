@@ -10,12 +10,14 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http;
+using duo.Interfaces;
 
 namespace SunamoYt
 {
     public class SunamoYtHelper
     {
         static Type type = typeof(SunamoYtHelper);
+        public static  IYouTubeConsts ytConsts = null;
         public static Func<string, bool> existsYtVideo;
         public static PpkOnDrive YouTubeAvailable = null;
         public static PpkOnDrive YouTubeUnavailableInSeveralCountriesButPlaying;
