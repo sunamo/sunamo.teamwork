@@ -10,9 +10,9 @@
     <EmbeddedResource Include="Profiles\Wiki280.profile.xml"></EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Apis.Core" Version="1.45.0"></PackageReference>
+    <PackageReference Include="Google.Apis.Core" Version="1.57.0"></PackageReference>
     <PackageReference Include="NTextCat" Version="0.3.65"></PackageReference>
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0"></PackageReference>
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="6.0.0"></PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\sunamo\shared\shared.csproj"></ProjectReference>

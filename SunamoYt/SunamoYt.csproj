@@ -3,7 +3,7 @@
     <TargetFramework>net48</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.45.0.1929"></PackageReference>
+    <PackageReference Include="Google.Apis.YouTube.v3" Version="1.57.0.2665"></PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\sunamo\shared\shared.csproj"></ProjectReference>
