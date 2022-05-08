@@ -136,7 +136,7 @@ static Type type = typeof(TranslateHelper);
     {
         if (_credential == null)
         {
-            ThrowExceptions.Custom(Exc.GetStackTrace(), type, Exc.CallingMethod(),"Please authenticate first, credential object cant be null");
+            ThrowEx.Custom("Please authenticate first, credential object cant be null");
         }
     }
     public static bool IsToSaveInCsTranslateToEn(string first)
